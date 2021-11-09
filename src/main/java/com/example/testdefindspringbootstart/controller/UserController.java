@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -71,7 +72,7 @@ public class UserController {
     @PutMapping("/user/add/{id}")
     @ApiImplicitParam(dataType = "Long", name = "id", value = "用户编号", required = true, example = "1")
     @ApiOperation(value = "修改用户")
-    public String modifyUser(@PathVariable Long id,@RequestBody User user) {
+    public String modifyUser(@PathVariable Long id,@Valid @RequestBody User user) {
 
         return "success";
     }

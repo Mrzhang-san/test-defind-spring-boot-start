@@ -3,6 +3,7 @@ package com.example.testdefindspringbootstart.bean;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,6 +16,7 @@ public class User implements Serializable {
      * 用户名
      */
     @ApiModelProperty("用户姓名")
+    @NotNull(message = "姓名不能为空")
     private String username;
     /**
      * 密码
