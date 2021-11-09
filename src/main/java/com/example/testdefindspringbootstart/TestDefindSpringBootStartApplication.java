@@ -1,6 +1,7 @@
 package com.example.testdefindspringbootstart;
 
 import com.example.myspringbootstart.MyService;
+import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.Resource;
 
+@EnableSwagger2Doc
 @SpringBootApplication
 public class TestDefindSpringBootStartApplication implements CommandLineRunner {
     @Resource
