@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 
-@Service
+//@Service
 public class MessageSubscriber {
 
     private static String CHANNEL = "message_space";
