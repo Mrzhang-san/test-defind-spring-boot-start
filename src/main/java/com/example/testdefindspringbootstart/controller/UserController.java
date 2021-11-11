@@ -1,9 +1,11 @@
 package com.example.testdefindspringbootstart.controller;
 
 import com.example.testdefindspringbootstart.bean.User;
+import com.example.testdefindspringbootstart.dao.UserDao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -13,6 +15,21 @@ import java.util.stream.Collectors;
 @RestController
 @Api(tags = "用户管理")
 public class UserController {
+
+    @Autowired
+    private UserDao userRepository;
+
+    @GetMapping("/create")
+    public void create() {
+        userRepository.save(new User("AAA", 10));
+    }
+
+    @GetMapping("/find")
+    public User find() {
+        User u1 = userRepository.findUserByUserName("AAA");
+        System.out.println("查询AAA用户：" + u1.getAge());
+        return u1;
+    }
 
     @ApiOperation(value = "用户登录")
     @PostMapping("/user/login")
