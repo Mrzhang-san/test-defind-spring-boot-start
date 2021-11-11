@@ -13,7 +13,7 @@ public class MessageSubscriber {
 
     private static String CHANNEL = "message_space";
 
-    public MessageSubscriber(RedisTemplate redisTemplate) {
+   /* public MessageSubscriber(RedisTemplate redisTemplate) {
         RedisConnection redisConnection = redisTemplate.getConnectionFactory().getConnection();
         redisConnection.subscribe(new MessageListener() {
             @Override
@@ -23,6 +23,6 @@ public class MessageSubscriber {
             }
         },CHANNEL.getBytes(StandardCharsets.UTF_8));
 
-    }
+    }*/
 
 }

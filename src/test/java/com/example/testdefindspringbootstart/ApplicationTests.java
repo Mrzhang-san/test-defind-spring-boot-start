@@ -58,6 +58,7 @@ public class ApplicationTests {
 
     @Test
     public void test1() throws Exception {
+        System.out.println("CacheManager type : " + cacheManager.getClass());
         // 创建1条记录
         userDao.save(new User("AAA", 10));
 

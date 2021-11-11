@@ -1,12 +1,24 @@
 package com.example.testdefindspringbootstart.dao;
 
 import com.example.testdefindspringbootstart.bean.User;
-import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+/*
+缓存加载的顺序
+# Generic
+#JCache (JSR-107) (EhCache 3, Hazelcast, Infinispan, and others)
+#EhCache 2.x
+#Hazelcast
+#Infinispan
+#Couchbase
+#Redis
+#Caffeine
+#Simple
+ */
 @CacheConfig(cacheNames = "users")
 public interface UserDao extends JpaRepository<User, Integer> {
 
