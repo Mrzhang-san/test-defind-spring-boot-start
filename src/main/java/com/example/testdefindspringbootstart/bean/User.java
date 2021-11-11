@@ -2,22 +2,34 @@ package com.example.testdefindspringbootstart.bean;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
 @ApiModel(description = "用户实体")
+@Entity
+@NoArgsConstructor
+@Data
+@Table(name = "user")
 public class User implements Serializable {
-    @ApiModelProperty("用户id")
-    private Long id;
 
+    @ApiModelProperty("用户id")
+    @Id
+    @GeneratedValue
+    private Long id;
     /**
      * 用户名
      */
     @ApiModelProperty("用户姓名")
     @NotNull(message = "姓名不能为空")
-    private String username;
+    private String userName;
     /**
      * 密码
      */
@@ -29,34 +41,10 @@ public class User implements Serializable {
     @ApiModelProperty("用户创建时间")
     private Date createTime;
 
-    public Long getId() {
-        return id;
-    }
+    private Integer age;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public User(String username, Integer age) {
+        this.userName = username;
+        this.age = age;
     }
 }

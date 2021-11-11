@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+//@RestController
 public class RedisController {
     private static String CHANNEL = "message_space";
     private RedisTemplate<String,String> redisTemplate;

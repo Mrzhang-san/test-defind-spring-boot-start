@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 import javax.annotation.Resource;
 
 @EnableSwagger2Doc
+@EnableCaching//开启缓存功能
 @SpringBootApplication
 public class TestDefindSpringBootStartApplication implements CommandLineRunner {
     @Resource
