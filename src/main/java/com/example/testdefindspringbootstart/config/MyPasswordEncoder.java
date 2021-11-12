@@ -1,11 +1,14 @@
+
 package com.example.testdefindspringbootstart.config;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 /**
  * asswordEncoder是一个密码解析器
  *
  */
+
 public class MyPasswordEncoder implements PasswordEncoder {
      @Override
      public String encode(CharSequence rawPassword) {

@@ -4,10 +4,11 @@ import com.example.testdefindspringbootstart.bean.User;
 import com.example.testdefindspringbootstart.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class HelloController {
@@ -18,7 +19,7 @@ public class HelloController {
      */
     @RequestMapping("/")
     public String index() {
-        return "index";
+        return "line";
     }
 
     @RequestMapping("/hello")
@@ -29,5 +30,16 @@ public class HelloController {
     public String login() {
         return "login";
     }
-
+    @RequestMapping(value = "/hnhe")
+    @ResponseBody
+    public List<User> kucunData(Model model) {
+        User user = new User("AAA", 10);
+        User user1 = new User("AAA2", 101);
+        User user2 = new User("AAA1", 103);
+        ArrayList<User> list = new ArrayList<>();
+        list.add(user);
+        list.add(user1);
+        list.add(user2);
+        return list;
+    }
 }

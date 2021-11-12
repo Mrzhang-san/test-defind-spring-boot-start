@@ -1,3 +1,4 @@
+
 package com.example.testdefindspringbootstart.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity//注解开启Spring Security的功能
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    /**
+
+/**
      * configure(HttpSecurity http)方法
      * 通过authorizeRequests()定义哪些URL需要被保护、哪些不需要被保护。
      * 例如以下代码指定了/和/test不需要任何认证就可以访问，其他的路径都必须通过身份验证。
@@ -22,10 +24,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * @param http
      * @throws Exception
      */
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/","/test").permitAll()
+                .antMatchers("/","/test","/show").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -33,27 +36,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
             .logout()
-                .permitAll();
+                .permitAll()
+                .and()
+                .csrf().disable();// 解决post请求报403错误
     }
 
-    /**
+/**
      * configureGlobal(AuthenticationManagerBuilder auth)方法，在内存中创建了一个用户，
      * 该用户的名称为user，密码为password，用户角色为USER。
      * @param auth
      * @throws Exception
-     */
-   /* @Autowired
+     *//*
+
+   */
+/* @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
                 .withUser("user").password("password").roles("USER");
         //自定义登录用户用户名和密码并赋予一些权限
-    }*/
+    }*//*
 
 
-    /**
+
+    */
+/**
      * java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the id "null"
      * @return
      */
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -66,3 +76,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 }
+
